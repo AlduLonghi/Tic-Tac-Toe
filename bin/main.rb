@@ -139,6 +139,7 @@ class Game
     end
 end
 
+#checking the inputs searching for coincidences 
 class Score 
     def initialize
         #checking inputs and coincidences 
@@ -150,8 +151,12 @@ class Score
         puts ''
         puts 'Nobody wins this time, would you like to try again? Press y. Else press any key'
         puts ''
-        continue = gets.chomp()
-        if continue == "y"
+        continue
+    end
+
+    def continue 
+        response = gets.chomp()
+        if response == "y"
             $a = "a"
             $b = "b"
             $c = "c"
