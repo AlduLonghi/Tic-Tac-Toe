@@ -1,149 +1,184 @@
 #!/usr/bin/env ruby
-
-#  Tic-Tac-Toe game consists of:
-#
-#  -Start the game.
-#
-#  -Get players' name.
-#
-#  -Assign a symbol for each player.
-#
-#  -Start the round.
-#
-#  -Display board.
-#
-#  -Get player's input for the cell he chooses.
-#
-#  -Play the logic for the different input possibilities.
-#
-#  -Check the score.
-#
-#  -Announce the winner or if it is a tie.
-#
-#  -Give the possibility of continue or quit.
-
-# First class is for giving info about the game and getting players' info
-
+# rubocop:disable Metrics/CyclomaticComplexity
+# rubocop:disable Metrics/PerceivedComplexity
+# rubocop:disable Style/IdenticalConditionalBranches
 class Start
-  def initialize
-    puts ' '
-    puts '************************************************************************************************************'
-    puts ' '
-    puts '                                     WELCOME TO THE GAME!'
-    puts ' '
-    puts '************************************************************************************************************'
-    puts ' '
-    puts ' '
-    puts '                       RULES FOR TIC-TAC-TOE:'
-    puts ' '
-    puts '1. The game is played on a grid that\'s 3 squares by 3 squares.'
-    puts ' '
-    puts '2. You are assigned a symbol to play with and your friend is assigned another one.'
-    puts ' '
-    puts '3. The first player to get 3 of her marks in a row (up, down, across, or diagonally) is the winner.'
-    puts ' '
-    puts '4. When all 9 squares are full, the game is over. If no player has 3 marks in a row, the game ends in a tie.'
-    puts ' '
-    puts ' '
-    # Starting with the game logic
-    Game.new
-  end
-end
-
-# game logic
-class Game
-  # setting variables for input options
-  def initialize
-    @a = 'a'
-    @b = 'b'
-    @c = 'c'
-    @d = 'd'
-    @e = 'e'
-    @f = 'f'
-    @g = 'g'
-    @h = 'h'
-    @i = 'i'
-    @counter = %w[a b c d e f g h i]
-    players
-  end
-
-  def players
-    puts ' '
-    puts 'PLEASE ENTER PLAYER NAME 1: '
-    @player1 = gets.chomp
-    puts ' '
-    puts "Hello #{@player1}! Your symbol is: ♥"
-    puts ' '
-    puts 'PLEASE ENTER PLAYER NAME 2: '
-    @player2 = gets.chomp
-    puts ' '
-    puts "Hello #{@player2}! Your symbol is: ▩"
-    puts ' '
-    puts "Lets begin with #{@player1}!"
-    puts ' '
-    round
-  end
-
-  def round
-    # This is just to show the approach on using user's input. Game logic will be loop based.
-    puts ''
-    puts 'Please (player on turn) choose your cell:'
-    puts ''
-    result
-    cell = gets.chomp
-    # Logic checking possibilities and removing taken elements
-    if cell == 'a'
-      @a = '♥' # $player_sym
-    # remove "a" from $counter
-    elsif cell == 'b'
-      @b = '♥'
+    def initialize
+      puts ' '
+      puts '************************************************************************************************************'
+      puts ' '
+      puts '                                     WELCOME TO THE GAME!'
+      puts ' '
+      puts '************************************************************************************************************'
+      puts ' '
+      puts ' '
+      puts '                       RULES FOR TIC-TAC-TOE:'
+      puts ' '
+      puts '1. The game is played on a grid that\'s 3 squares by 3 squares.'
+      puts ' '
+      puts '2. You are assigned a symbol to play with and your friend is assigned another one.'
+      puts ' '
+      puts '3. The first player to get 3 of her marks in a row (up, down, across, or diagonally) is the winner.'
+      puts ' '
+      puts '4. When all 9 squares are full, the game is over. If no player has 3 marks in a row, the game ends in a tie.'
+      puts ' '
+      puts ' '
+      Game.new
     end
-    result
-    score
   end
-
-  # displaying board
-  def result
-    puts '-------------------'
-    puts '|     |     |     |'
-    puts "|  #{@a}  |  #{@b}  |  #{@c}  |"
-    puts '|     |     |     |'
-    puts '-------------------'
-    puts '|     |     |     |'
-    puts "|  #{@d}  |  #{@e}  |  #{@f}  |"
-    puts '|     |     |     |'
-    puts '-------------------'
-    puts '|     |     |     |'
-    puts "|  #{@g}  |  #{@h}  |  #{@i}  |"
-    puts '|     |     |     |'
-    puts '-------------------'
+  
+  class Game
+    def initialize
+      @a = 'a'
+      @b = 'b'
+      @c = 'c'
+      @d = 'd'
+      @e = 'e'
+      @f = 'f'
+      @g = 'g'
+      @h = 'h'
+      @i = 'i'
+      @counter = %w[a b c d e f g h i]
+      players
+    end
+  
+    def players
+      puts ' '
+      puts 'PLEASE ENTER PLAYER NAME 1: '
+      @player1 = gets.chomp
+      puts ' '
+      puts "Hello #{@player1}! Your symbol is: ♥"
+      puts ' '
+      puts 'PLEASE ENTER PLAYER NAME 2: '
+      @player2 = gets.chomp
+      puts ' '
+      puts "Hello #{@player2}! Your symbol is: ▩"
+      puts ' '
+      puts "Lets begin with #{@player1}!"
+      puts ' '
+      round
+    end
+  
+    def round
+      @turn = true
+      loop do
+        break if @turn == false
+  
+        @counter.length.times do
+          break if @turn == false
+  
+          @counter.length.odd? ? player1_sym : player2_sym
+          if @counter.any? { |x| x == @board }
+            @counter.reject! { |x| x == @board }
+            checking_input
+            score
+          else
+            puts 'UPS! already taken. Try again!'
+          end
+        end
+      end
+      result
+    end
+  
+    def checking_input
+      if @board == 'a'
+        @a = @player_sym
+      elsif @board == 'b'
+        @b = @player_sym
+      elsif @board == 'c'
+        @c = @player_sym
+      elsif @board == 'd'
+        @d = @player_sym
+      elsif @board == 'e'
+        @e = @player_sym
+      elsif @board == 'f'
+        @f = @player_sym
+      elsif @board == 'g'
+        @g = @player_sym
+      elsif @board == 'h'
+        @h = @player_sym
+      elsif @board == 'i'
+        @i = @player_sym
+      end
+    end
+  
+    def player1_sym
+      @player_sym = '♥'
+      player = @player1
+      puts "#{player} choose your board:"
+      result
+      @board = gets.chomp
+    end
+  
+    def player2_sym
+      @player_sym = '▩'
+      player = @player2
+      puts "#{player} choose your board:"
+      result
+      @board = gets.chomp
+    end
+  
+    def score
+      if @a == @b && @b == @c || @a == @d && @d == @g
+        @var = @a
+        player_winner
+      elsif @d == @e && @e == @f || @b == @e && @e == @h
+        @var = @e
+        player_winner
+      elsif @g == @h && @h == @i || @c == @f && @f == @i
+        @var = @i
+        player_winner
+      elsif @a == @e && @e == @i || @c == @e && @e == @g
+        @var = @e
+        player_winner
+      elsif @counter.empty?
+        Continue.new
+      else
+        @turn = true
+      end
+    end
+  
+    def player_winner
+      if @var == '♥'
+        puts '*****************'
+        puts "     #{@player1.upcase} WINS!"
+        puts '*****************'
+      else
+        puts '*****************'
+        puts "     #{@player2.upcase} WINS!"
+        puts '*****************'
+      end
+      @turn = false
+    end
+  
+    def result
+      puts '-------------------'
+      puts '|     |     |     |'
+      puts "|  #{@a}  |  #{@b}  |  #{@c}  |"
+      puts '|     |     |     |'
+      puts '-------------------'
+      puts '|     |     |     |'
+      puts "|  #{@d}  |  #{@e}  |  #{@f}  |"
+      puts '|     |     |     |'
+      puts '-------------------'
+      puts '|     |     |     |'
+      puts "|  #{@g}  |  #{@h}  |  #{@i}  |"
+      puts '|     |     |     |'
+      puts '-------------------'
+    end
   end
-
-  # checking the inputs searching for coincidences
-  def score
-    # checking inputs and coincidences
-    # if player1 wins
-    # puts "#{player1} is the winner!"
-    # if player2 wins
-    # puts "#{player2} is the winner!"
-    # if its a tie
-    puts ''
-    puts 'Nobody wins this time, would you like to try again? Press y. Else press any key.'
-    puts ''
-    Continue.new
+  
+  class Continue
+    def initialize
+      puts "Nobody wins:( would you like to try again? Press 'y'. If you want to end the game press any key"
+      response = gets.chomp
+      response == 'y' ? Game.new : @turn = false
+    end
   end
-end
-
-class Continue
-  # getting continue input and acting accordingly
-  def initialize
-    @response = gets.chomp
-    next_step
-  end
-
-  def next_step
-    return Game.new unless @response != 'y'
-  end
-end
-
-Start.new
+  
+  Start.new
+  
+  # rubocop:enable Metrics/CyclomaticComplexity
+  # rubocop:enable Metrics/PerceivedComplexity
+  # rubocop:enable Style/IdenticalConditionalBranches
+  
