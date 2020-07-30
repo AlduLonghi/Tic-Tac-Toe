@@ -131,7 +131,7 @@ class Game
       @var = @e
       player_winner
     elsif @counter.empty?
-        result
+      result
       EndOrContinue.new
     else
       @turn = true
