@@ -72,6 +72,7 @@ class Start
 end
 
 class Game 
+    #setting variables for input options 
     $a = "a"
     $b = "b"
     $c = "c"
