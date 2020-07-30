@@ -99,6 +99,7 @@ class Game
 
          if cell == "a"
             $a = "♥" #$player_sym
+            #remove "a" from $counter
          else 
             $a = $a
          end
@@ -112,10 +113,12 @@ class Game
 
           if cell == "b"
              $b = "▩" #$player_sym
+             #remove "b" from $counter
           else
              $b = $b
           end
           result
+          score = Score.new
         end
 
     #displaying board 
@@ -136,6 +139,17 @@ class Game
     end
 end
 
+class Score 
+    def initialize
+        #checking inputs and coincidences 
+        #if player1 wins 
+        #puts "#{player1} is the winner!"
+        #if player2 wins 
+        #puts "#{player2} is the winner!"
+        #if its a tie
+        puts ''
+        puts 'Nobody wins this time, would you like to try again? Press \'y'
+        puts ''
 
 
 game = Start.new
