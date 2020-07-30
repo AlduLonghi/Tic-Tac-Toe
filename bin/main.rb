@@ -86,19 +86,55 @@ class Game
     $player_sym #Will depend on the player playing the turn 
 
     def initialize
+
+        #This is just to show the approach on using user's input. Game logic will be loop based.
+
         puts ''
-        puts "Please #{player1} choose your cell:"
+        puts "Please #{$player1} choose your cell:"
         puts ''
         result
         cell = gets.chomp()
-        #Logic checking possibilities
+
+        #Logic checking possibilities and removing taken elements 
+
          if cell == "a"
             $a = "♥" #$player_sym
-         elsif cell == "b"
-            $b = "♥" #$player_sym
+         else 
+            $a = $a
          end
+         puts ''
+         puts "Please #{$player2} choose your cell:"
+         puts ''
          result
+         cell = gets.chomp()
+
+         #Logic checking possibilities and removing taken elements 
+
+          if cell == "b"
+             $b = "▩" #$player_sym
+          else
+             $b = $b
+          end
+          result
         end
+
+    #displaying board 
+    def result 
+        puts "-------------------"
+        puts "|     |     |     |"
+        puts "|  #{$a}  |  #{$b}  |  #{$c}  |"
+        puts "|     |     |     |"
+        puts "-------------------"
+        puts "|     |     |     |"
+        puts "|  #{$d}  |  #{$e}  |  #{$f}  |"
+        puts "|     |     |     |"
+        puts "-------------------"
+        puts "|     |     |     |"
+        puts "|  #{$g}  |  #{$h}  |  #{$i}  |"
+        puts "|     |     |     |"
+        puts "-------------------"
+    end
+end
 
 
 
