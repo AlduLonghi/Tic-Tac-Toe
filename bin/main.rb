@@ -148,8 +148,24 @@ class Score
         #puts "#{player2} is the winner!"
         #if its a tie
         puts ''
-        puts 'Nobody wins this time, would you like to try again? Press \'y'
+        puts 'Nobody wins this time, would you like to try again? Press y'
         puts ''
+        continue = gets.chomp()
+        if continue == "y"
+            $a = "a"
+            $b = "b"
+            $c = "c"
+            $d = "d"
+            $e = "e"
+            $f = "f"
+            $g = "g"
+            $h = "h"
+            $i = "i"
+            $counter = ["a", "b", "c", "d", "e", "f", "g", "h", "i"]
+            again = Game.new
+        end
+    end
+end
 
 
 game = Start.new
