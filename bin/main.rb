@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
-
+# rubocop:disable Metrics/CyclomaticComplexity
+# rubocop:disable Metrics/PerceivedComplexity
 class Start
   def initialize
     puts ' '
