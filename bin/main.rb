@@ -82,9 +82,22 @@ class Game
     $h = "h"
     $i = "i"
     $counter = ["a", "b", "c", "d", "e", "f", "g", "h", "i"]
+    $player_sym #Will depend on the player playing the turn 
 
     def initialize
-
+        puts ''
+        puts "Please #{player1} choose your cell:"
+        puts ''
+        result
+        cell = gets.chomp()
+        #Logic checking possibilities
+         if cell == "a"
+            $a = "♥" #$player_sym
+         elsif cell == "b"
+            $b = "♥" #$player_sym
+         end
+         result
+        end
 
 
 
