@@ -104,7 +104,7 @@ class Game
   def player1_sym
     @player_sym = '♥'
     player = @player1
-    puts "#{player} choose your board:"
+    puts "#{player.upcase} choose your board:"
     result
     @board = gets.chomp
   end
@@ -112,7 +112,7 @@ class Game
   def player2_sym
     @player_sym = '▩'
     player = @player2
-    puts "#{player} choose your board:"
+    puts "#{player.upcase} choose your board:"
     result
     @board = gets.chomp
   end
@@ -131,7 +131,7 @@ class Game
       @var = @e
       player_winner
     elsif @counter.empty?
-      Continue.new
+      EndOrContinue.new
     else
       @turn = true
     end
@@ -139,9 +139,11 @@ class Game
 
   def player_winner
     @player = @var == '♥' ? @player1 : @player2
+    puts ''
     puts '*****************'
-    puts "     #{@player.upcase} WINS!"
+    puts " #{@player.upcase} WINS!"
     puts '*****************'
+    puts ''
     @turn = false
   end
 
@@ -162,9 +164,11 @@ class Game
   end
 end
 
-class Continue
+class EndOrContinue
   def initialize
-    puts "Nobody wins:( would you like to try again? Press 'y'. If you want to end the game press any key"
+    puts '*********************************************************************************************'
+    puts "It's a tie! Would you like to try again? Press 'y'. If you want to end the game press any key"
+    puts '*********************************************************************************************'
     response = gets.chomp
     response == 'y' ? Game.new : @turn = false
   end
