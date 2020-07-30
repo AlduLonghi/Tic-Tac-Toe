@@ -177,4 +177,4 @@ end
 Start.new
 
 # rubocop:enable Metrics/CyclomaticComplexity
-# rubocop:enable Metrics/PerceivedComplexit
+# rubocop:enable Metrics/PerceivedComplexity
