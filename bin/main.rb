@@ -102,7 +102,7 @@ class Game
   end
 
   def player1_sym
-    @player_sym = '♥'
+    @player_sym = '♥
     player = @player1
     puts "#{player.upcase} choose your board:"
     result
