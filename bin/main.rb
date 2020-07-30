@@ -26,7 +26,6 @@
 
 # rubocop:disable Metrics/CyclomaticComplexity
 # rubocop:disable Metrics/PerceivedComplexity
-# rubocop:disable Style/IdenticalConditionalBranches
 
 class Start
   def initialize
@@ -166,7 +165,7 @@ class Game
       @var = @e
       player_winner
     elsif @counter.empty?
-      Continue.new
+      EndOrNewgame.new
     else
       @turn = true
     end
@@ -174,15 +173,10 @@ class Game
 
   # displaying winner
   def player_winner
-    if @var == '♥'
-      puts '*****************'
-      puts "     #{@player1.upcase} WINS!"
-      puts '*****************'
-    else
-      puts '*****************'
-      puts "     #{@player2.upcase} WINS!"
-      puts '*****************'
-    end
+    @player = @var == '♥' ? @player1 : @player2
+    puts '*****************'
+    puts "     #{@player.upcase} WINS!"
+    puts '*****************'
     @turn = false
   end
 
@@ -202,9 +196,9 @@ class Game
     puts '|     |     |     |'
     puts '-------------------'
   end
-  end
+end
 
-class End_or_newgame
+class EndOrNewgame
   # getting continue input and acting accordingly
   def initialize
     puts "Nobody wins:( would you like to try again? Press 'y'. If you want to end the game press any key"
@@ -215,6 +209,5 @@ end
 
 Start.new
 
-# rubocop:disable Metrics/CyclomaticComplexity
-# rubocop:disable Metrics/PerceivedComplexity
-# rubocop:disable Style/IdenticalConditionalBranches
+# rubocop:enable Metrics/CyclomaticComplexity
+# rubocop:enable Metrics/PerceivedComplexity
