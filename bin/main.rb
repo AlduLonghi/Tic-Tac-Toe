@@ -61,7 +61,7 @@ class Game
   def round
     @turn = true
     loop do
-      break if @turn == false
+      break if @turn == fals
 
       @counter.length.times do
         break if @turn == false
@@ -102,7 +102,7 @@ class Game
   end
 
   def player1_sym
-    @player_sym = '♥
+    @player_sym = '♥'
     player = @player1
     puts "#{player.upcase} choose your board:"
     result
