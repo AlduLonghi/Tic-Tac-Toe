@@ -71,6 +71,7 @@ class Start
 
 end
 
+#game logic 
 class Game 
     #setting variables for input options 
     $a = "a"
@@ -149,11 +150,12 @@ class Score
         #puts "#{player2} is the winner!"
         #if its a tie
         puts ''
-        puts 'Nobody wins this time, would you like to try again? Press y. Else press any key'
+        puts 'Nobody wins this time, would you like to try again? Press y. Else press any key.'
         puts ''
         continue
     end
-
+    
+    #getting continue input and acting accordingly
     def continue 
         response = gets.chomp()
         if response == "y"
