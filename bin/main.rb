@@ -61,7 +61,7 @@ class Game
   def round
     @turn = true
     loop do
-      break if @turn == fals
+      break if @turn == false
 
       @counter.length.times do
         break if @turn == false
@@ -177,4 +177,4 @@ end
 Start.new
 
 # rubocop:enable Metrics/CyclomaticComplexity
-# rubocop:enable Metrics/PerceivedComplexity
+# rubocop:enable Metrics/PerceivedComplexit
