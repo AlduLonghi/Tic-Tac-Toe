@@ -148,7 +148,7 @@ class Score
         #puts "#{player2} is the winner!"
         #if its a tie
         puts ''
-        puts 'Nobody wins this time, would you like to try again? Press y'
+        puts 'Nobody wins this time, would you like to try again? Press y. Else press any key'
         puts ''
         continue = gets.chomp()
         if continue == "y"
