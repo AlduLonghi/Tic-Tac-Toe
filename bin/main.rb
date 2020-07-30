@@ -55,10 +55,10 @@ class Game
     puts ' '
     puts "Lets begin with #{@player1}!"
     puts ' '
-    round
+    rounds
   end
 
-  def round
+  def rounds
     @turn = true
     loop do
       break if @turn == false
@@ -131,6 +131,7 @@ class Game
       @var = @e
       player_winner
     elsif @counter.empty?
+        result
       EndOrContinue.new
     else
       @turn = true
