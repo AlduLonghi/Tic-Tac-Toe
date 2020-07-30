@@ -72,7 +72,7 @@ class Game
           checking_input
           score
         else
-          puts 'UPS! already taken. Try again!'
+          puts 'UPS! already taken or not a cell name. Try again!'
         end
       end
     end
@@ -141,7 +141,7 @@ class Game
     @player = @var == '♥' ? @player1 : @player2
     puts ''
     puts '*****************'
-    puts " #{@player.upcase} WINS!"
+    puts "    #{@player.upcase} WINS!"
     puts '*****************'
     puts ''
     @turn = false
