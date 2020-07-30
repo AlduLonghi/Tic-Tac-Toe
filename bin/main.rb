@@ -156,7 +156,7 @@ class Score
     end
     
     #getting continue input and acting accordingly
-    def continue 
+    def continue
         response = gets.chomp()
         if response == "y"
             $a = "a"
