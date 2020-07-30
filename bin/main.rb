@@ -24,6 +24,10 @@
 
 # First class is for giving info about the game and getting players' info
 
+# rubocop:disable Metrics/CyclomaticComplexity
+# rubocop:disable Metrics/PerceivedComplexity
+# rubocop:disable Style/IdenticalConditionalBranches
+
 class Start
   def initialize
     puts ' '
@@ -52,7 +56,6 @@ end
 
 # game logic
 class Game
-  # setting variables for input options
   def initialize
     @a = 'a'
     @b = 'b'
@@ -67,6 +70,7 @@ class Game
     players
   end
 
+  # getting users' info
   def players
     puts ' '
     puts 'PLEASE ENTER PLAYER NAME 1: '
@@ -81,28 +85,108 @@ class Game
     puts ' '
     puts "Lets begin with #{@player1}!"
     puts ' '
-    round
+    game
   end
 
-  def round
-    # This is just to show the approach on using user's input. Game logic will be loop based.
-    puts ''
-    puts 'Please (player on turn) choose your cell:'
-    puts ''
-    result
-    cell = gets.chomp
-    # Logic checking possibilities and removing taken elements
-    if cell == 'a'
-      @a = '♥' # $player_sym
-    # remove "a" from $counter
-    elsif cell == 'b'
-      @b = '♥'
+  # playing the game itself
+  def game
+    @turn = true
+    loop do
+      break if @turn == false
+
+      @counter.length.times do
+        break if @turn == false
+
+        @counter.length.odd? ? player1_sym : player2_sym
+        if @counter.any? { |x| x == @board }
+          @counter.reject! { |x| x == @board }
+          checking_input
+        else
+          puts 'UPS! already taken. Try again!'
+        end
+        score
+      end
     end
     result
-    score
   end
 
-  # displaying board
+  # checking users' input
+  def checking_input
+    if @board == 'a'
+      @a = @player_sym
+    elsif @board == 'b'
+      @b = @player_sym
+    elsif @board == 'c'
+      @c = @player_sym
+    elsif @board == 'd'
+      @d = @player_sym
+    elsif @board == 'e'
+      @e = @player_sym
+    elsif @board == 'f'
+      @f = @player_sym
+    elsif @board == 'g'
+      @g = @player_sym
+    elsif @board == 'h'
+      @h = @player_sym
+    elsif @board == 'i'
+      @i = @player_sym
+    end
+  end
+
+  # case for player1
+  def player1_sym
+    @player_sym = '♥'
+    player = @player1
+    puts "#{player} choose your board:"
+    result
+    @board = gets.chomp
+  end
+
+  # case for player2
+  def player2_sym
+    @player_sym = '▩'
+    player = @player2
+    puts "#{player} choose your board:"
+    result
+    @board = gets.chomp
+  end
+
+  # checking score
+  def score
+    if @a == @b && @b == @c || @a == @d && @d == @g
+      @var = @a
+      player_winner
+    elsif @d == @e && @e == @f || @b == @e && @e == @h
+      @var = @e
+      player_winner
+    elsif @g == @h && @h == @i || @c == @f && @f == @i
+      @var = @i
+      player_winner
+    elsif @a == @e && @e == @i || @c == @e && @e == @g
+      @var = @e
+      player_winner
+    elsif @counter.empty?
+      Continue.new
+    else
+      @turn = true
+    end
+  end
+
+  # displaying winner
+  def player_winner
+    if @var == '♥'
+      puts '*****************'
+      puts "     #{@player1.upcase} WINS!"
+      puts '*****************'
+    else
+      puts '*****************'
+      puts "     #{@player2.upcase} WINS!"
+      puts '*****************'
+    end
+    @turn = false
+  end
+
+  # board display
   def result
     puts '-------------------'
     puts '|     |     |     |'
@@ -118,32 +202,19 @@ class Game
     puts '|     |     |     |'
     puts '-------------------'
   end
-
-  # checking the inputs searching for coincidences
-  def score
-    # checking inputs and coincidences
-    # if player1 wins
-    # puts "#{player1} is the winner!"
-    # if player2 wins
-    # puts "#{player2} is the winner!"
-    # if its a tie
-    puts ''
-    puts 'Nobody wins this time, would you like to try again? Press y. Else press any key.'
-    puts ''
-    Continue.new
   end
-end
 
-class Continue
+class End_or_newgame
   # getting continue input and acting accordingly
   def initialize
-    @response = gets.chomp
-    next_step
-  end
-
-  def next_step
-    return Game.new unless @response != 'y'
+    puts "Nobody wins:( would you like to try again? Press 'y'. If you want to end the game press any key"
+    response = gets.chomp
+    response == 'y' ? Game.new : @turn = false
   end
 end
 
 Start.new
+
+# rubocop:disable Metrics/CyclomaticComplexity
+# rubocop:disable Metrics/PerceivedComplexity
+# rubocop:disable Style/IdenticalConditionalBranches
