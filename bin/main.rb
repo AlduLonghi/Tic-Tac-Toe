@@ -1,15 +1,12 @@
 #!/usr/bin/env ruby
-require './messages.rb'
-require './game.rb'
-require './logic.rb'
-require './board.rb'
+require './lib/messages.rb'
+require './lib/logic.rb'
+require './lib/board.rb'
 
 class TicTacToe
   include Messages
 
   def initialize
-    @counter = %w[a b c d e f g h i]
-    @counter_for_display = %w[a b c d e f g h i]
     Messages.welcome
     Messages.rules
     players_info
@@ -22,7 +19,6 @@ class TicTacToe
     puts 'PLEASE ENTER PLAYER NAME 2: '
     @player2 = gets.chomp
     Messages.players(@player2, '▩')
-    puts "Lets begin with #{@player1}!"
     rounds
   end
 
@@ -30,6 +26,7 @@ class TicTacToe
     @turn = true
     @counter = %w[a b c d e f g h i]
     @counter_for_display = %w[a b c d e f g h i]
+    puts "Lets begin with #{@player1}!"
     loop do
       break if @turn == false
 
