@@ -22,7 +22,7 @@ class TicTacToe
     rounds
   end
 
-  def rounds
+  def round
     @turn = true
     @counter = %w[a b c d e f g h i]
     @counter_for_display = %w[a b c d e f g h i]
