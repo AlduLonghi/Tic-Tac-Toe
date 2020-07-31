@@ -22,4 +22,3 @@ class Board
     puts '-------------------'
   end
 end
-ll
