@@ -1,6 +1,6 @@
 # Tic-Tac-Toe
 
-![Tic-Tac-Toe](./TicTacToe.gif)
+![Tic-Tac-Toe](./readme-media/TicTacToe.gif)
 
 Tic-Tac-Toe is a game in which two players alternately put Xs and Os in compartments of a figure formed by two vertical lines crossing two horizontal lines and each tries to get a row of three Xs or three Os before the opponent does
 
@@ -25,12 +25,18 @@ Historians aren’t completely clear about the origin of the game’s name, but 
 
 4. When all 9 squares are full, the game is over. If no player has 3 marks in a row, the game ends in a tie.
 
+## Built with 
+
+-Ruby
+
+![screenshot](./readme-media/Tic-Tac-Toe-screenshot.jpg)
+
 ## How to play this game?
 
-- [In your machine](#In-your-machine)
+- [On your machine](#On-your-machine)
 - [Using live demo](#Using-live-demo)
 
-## In your machine 
+### On your machine 
 
 **Prerequisites**
 - Install [Ruby](https://www.ruby-lang.org/es/documentation/installation/)
@@ -66,11 +72,11 @@ Historians aren’t completely clear about the origin of the game’s name, but 
 
 7. Follow the game instructions.
 
-## Using live demo 
+### Using live demo 
 
-**Using one machine**
+**Using a single machine**
 
-1. Click [this link](https://repl.it/join/zykzuplh-aldulonghi)
+1. Click [this link](https://repl.it/join/wgnscubb-aldulonghi)
 
 2. Press "Run" on the top.
 
@@ -78,10 +84,13 @@ Historians aren’t completely clear about the origin of the game’s name, but 
 
 **Using multiplayer option**
 
-2.
+1. Click [this link](https://repl.it/join/wgnscubb-aldulonghi)
 
+2. Press "Share" on the top right corner and invite a friend.
 
+3. Once both are in press "Run".
 
+4. Follow the game instructions.
 
 ## Author
 
