@@ -42,23 +42,43 @@ Historians aren’t completely clear about the origin of the game’s name, but 
 
 2. Run the following commands:
 
-> - git clone https://github.com/AlduLonghi/Tic-Tac-Toe.git
-- > cd Tic-Tac-Toe
-- > bin/main.rb
+- git clone https://github.com/AlduLonghi/Tic-Tac-Toe.git
+
+- cd Tic-Tac-Toe
+
+- bin/main.rb
+
+3. Follow the game instructions 
 
 **In case you don't use a control version system**
 
 1. Go to [the repository](https://github.com/AlduLonghi/Tic-Tac-Toe)
 
-2. Press the green button that says "Code"
+2. Press the green button that says "Code".
 
-3. Press "Download zip"
+3. Press "Download zip".
 
 4. Once downloaded, extract the files.
 
-5. Right click on the folder, press "Open in terminal"
+5. Right click on the folder, press "Open in terminal".
 
 6. Run bin/main.rb
+
+7. Follow the game instructions.
+
+## Using live demo 
+
+**Using one machine**
+
+1. Click [this link](https://repl.it/join/zykzuplh-aldulonghi)
+
+2. Press "Run" on the top.
+
+3. Follow the game instructions.
+
+**Using multiplayer option**
+
+2.
 
 
 
