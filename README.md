@@ -42,7 +42,7 @@ Historians aren’t completely clear about the origin of the game’s name, but 
 
 2. Run the following commands:
 
-- > git clone https://github.com/AlduLonghi/Tic-Tac-Toe.git
+> - git clone https://github.com/AlduLonghi/Tic-Tac-Toe.git
 - > cd Tic-Tac-Toe
 - > bin/main.rb
 
