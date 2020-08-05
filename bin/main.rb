@@ -25,7 +25,7 @@ class TicTacToe
   def rounds
     @turn = true
     @counter = %w[a b c d e f g h i]
-    @counter_for_display = %w[a b c d e f g h i]
+    p @counter_for_display = %w[a b c d e f g h i]
     puts "Lets begin with #{@player1}!"
     loop do
       break if @turn == false
