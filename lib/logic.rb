@@ -35,8 +35,5 @@ class Logic
   end
 end
 
-logic = Logic.new(%w[♥ ♥ ♥ d e f g h i], '♥')
-p logic.checking()
-
 # rubocop:enable Metrics/CyclomaticComplexity
 # rubocop:enable Metrics/PerceivedComplexity
