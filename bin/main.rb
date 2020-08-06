@@ -38,7 +38,7 @@ class TicTacToe
           ind = @counter_for_display.index(@cell)
           @counter_for_display[ind] = @sym
           @counter.reject! { |x| x == @cell }
-          p @counter_for_display
+          @counter_for_display
           result(@counter_for_display, @sym, @player)
         else
           puts 'UPS! already taken or not a cell name. Try again!'
