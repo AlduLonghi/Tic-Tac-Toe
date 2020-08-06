@@ -1,4 +1,4 @@
-require './lib/logic'
+require_relative '../lib/logic'
 
 describe Logic do
   let(:array_row) { %w[♥ ♥ ♥ d e f g h i] }
