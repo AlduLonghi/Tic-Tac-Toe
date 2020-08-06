@@ -25,7 +25,7 @@ class TicTacToe
   def rounds
     @turn = true
     @counter = %w[a b c d e f g h i]
-    p @counter_for_display = %w[a b c d e f g h i]
+    @counter_for_display = %w[a b c d e f g h i]
     puts "Lets begin with #{@player1}!"
     loop do
       break if @turn == false
@@ -38,6 +38,7 @@ class TicTacToe
           ind = @counter_for_display.index(@cell)
           @counter_for_display[ind] = @sym
           @counter.reject! { |x| x == @cell }
+          p @counter_for_display
           result(@counter_for_display, @sym, @player)
         else
           puts 'UPS! already taken or not a cell name. Try again!'
